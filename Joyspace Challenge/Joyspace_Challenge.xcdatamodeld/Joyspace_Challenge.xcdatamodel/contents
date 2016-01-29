@@ -8,8 +8,8 @@
         <relationship name="thread" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="JCThread" inverseName="messages" inverseEntity="JCThread" syncable="YES"/>
     </entity>
     <entity name="JCThread" representedClassName=".JCThread" syncable="YES">
-        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="JCMessage" inverseName="thread" inverseEntity="JCMessage" syncable="YES"/>
     </entity>
     <elements>

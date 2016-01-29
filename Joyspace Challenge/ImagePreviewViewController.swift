@@ -15,6 +15,11 @@ class ImagePreviewViewController: UIViewController {
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     var chatDelegate:ChatDelegate?
     
+    override func loadView() {
+        self.view = NSBundle.mainBundle().loadNibNamed("ImagePreviewViewController", owner: self, options: nil)[0] as! UIView
+         self.view.frame = UIScreen.mainScreen().bounds
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

@@ -98,9 +98,10 @@
                                             <action selector="addPhoto:" destination="CLg-jD-IOF" id="2Uq-MT-BQF"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="pDf-gw-RBH"/>
                                     <barButtonItem style="plain" id="7b6-OP-pY7">
                                         <textField key="customView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="sw6-bx-Vzg">
-                                            <rect key="frame" x="51" y="7" width="212" height="30"/>
+                                            <rect key="frame" x="54" y="7" width="212" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -110,6 +111,7 @@
                                             </connections>
                                         </textField>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="2mb-8o-OJz"/>
                                     <barButtonItem title="Send" id="Qef-H3-vGD">
                                         <connections>
                                             <action selector="sendMessage:" destination="CLg-jD-IOF" id="56s-lY-MVI"/>

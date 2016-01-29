@@ -16,6 +16,7 @@ class MessageTableViewCell: UITableViewCell {
     @IBOutlet weak var messageWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var messageLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var messageTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var timeStampLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

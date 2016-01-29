@@ -16,6 +16,6 @@ extension JCThread {
 
     @NSManaged var title: String?
     @NSManaged var messages: NSOrderedSet?
-    @NSManaged var createdAt: NSDate?
+    @NSManaged var updatedAt: NSDate?
 
 }

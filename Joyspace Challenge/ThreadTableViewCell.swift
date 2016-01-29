@@ -31,7 +31,7 @@ class ThreadTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    @IBAction func titleFinished(sender: AnyObject) {
+    @IBAction func titleFinished(sender: AnyObject?) {
         if titleField.text?.characters.count > 0 {
             self.endEditing(true)
             if thread?.title?.isEmpty == false {

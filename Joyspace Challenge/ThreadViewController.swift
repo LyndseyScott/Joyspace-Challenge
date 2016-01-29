@@ -30,7 +30,7 @@ class ThreadViewController: UIViewController, ThreadDelegate {
     
     override func viewWillAppear(animated: Bool) {
         let fetchRequest = NSFetchRequest(entityName: "JCThread")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "createdAt", ascending: false)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "updatedAt", ascending: false)]
         do {
             let results =
             try managedContext.executeFetchRequest(fetchRequest)
@@ -64,7 +64,7 @@ class ThreadViewController: UIViewController, ThreadDelegate {
     
     func createdNewThread(withTitle title:String?) {
         selectedThread!.title = title
-        selectedThread!.createdAt = NSDate()
+        selectedThread!.updatedAt = NSDate()
         do {
             try managedContext.save()
         } catch let error as NSError  {
@@ -125,16 +125,13 @@ extension ThreadViewController: UITableViewDelegate, UITableViewDataSource {
                     cell.lastMessageImageView.image = UIImage(data: messageImageData)
                     cell.lastMessageLabel.text = nil
                 }
-                if let timeStamp = message.timestamp {
-                    cell.dateLabel.text = timeStamp.stringFromDate()
-                }
             }
         } else {
             cell.lastMessageImageView.image = nil
             cell.lastMessageLabel.text = nil
-            if let timeStamp = threads[indexPath.row].createdAt {
-                cell.dateLabel.text = timeStamp.stringFromDate()
-            }
+        }
+        if let timeStamp = threads[indexPath.row].updatedAt {
+            cell.dateLabel.text = timeStamp.stringFromDate()
         }
         return cell
     }
@@ -143,6 +140,8 @@ extension ThreadViewController: UITableViewDelegate, UITableViewDataSource {
         if (threads.count == 0 || threads[0].title != nil) && (selectedThread?.title != nil || selectedThread == nil) {
             selectedThread = threads[indexPath.row]
             performSegueWithIdentifier("goToChat", sender: self)
+        } else if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as? ThreadTableViewCell where threads[0].title == nil {
+            cell.titleFinished(nil)
         }
     }
     

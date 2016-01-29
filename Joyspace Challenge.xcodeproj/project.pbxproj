@@ -123,13 +123,13 @@
 			name = SocketRocket;
 			sourceTree = "<group>";
 		};
-		042894AE1C5BE7550045B8B7 /* Chat Bubbles */ = {
+		042894AE1C5BE7550045B8B7 /* Chat Images */ = {
 			isa = PBXGroup;
 			children = (
 				0428942F1C5AE4D40045B8B7 /* Left_bubble.png */,
 				042894301C5AE4D40045B8B7 /* Right_bubble.png */,
 			);
-			name = "Chat Bubbles";
+			name = "Chat Images";
 			sourceTree = "<group>";
 		};
 		042894AF1C5BE7690045B8B7 /* Image Preview */ = {
@@ -170,7 +170,7 @@
 				04CF7D391C5A8B8A006E1F16 /* ThreadViewController.swift */,
 				04CF7D3B1C5A8B95006E1F16 /* ChatViewController.swift */,
 				04CF7D281C5A86ED006E1F16 /* Main.storyboard */,
-				042894AE1C5BE7550045B8B7 /* Chat Bubbles */,
+				042894AE1C5BE7550045B8B7 /* Chat Images */,
 				042894AF1C5BE7690045B8B7 /* Image Preview */,
 				042894571C5B25710045B8B7 /* Core Data */,
 				0428942E1C5A9B560045B8B7 /* Custom Cells */,

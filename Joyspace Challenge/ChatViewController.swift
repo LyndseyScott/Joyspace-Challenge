@@ -68,6 +68,7 @@ class ChatViewController: UIViewController, ChatDelegate {
             message.thread = thread
             
             thread!.messages?.mutableCopy().addObject(message)
+            thread!.updatedAt = message.timestamp
             do {
                 try managedContext.save()
             } catch let error as NSError  {
@@ -139,6 +140,7 @@ extension ChatViewController:SRWebSocketDelegate {
             message.thread = thread
             
             thread!.messages?.mutableCopy().addObject(message)
+            thread!.updatedAt = message.timestamp
             do {
                 try managedContext.save()
             } catch let error as NSError  {
@@ -183,12 +185,14 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
         if let message = thread?.messages![indexPath.row] as? JCMessage {
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             if message.isSender == true {
-                cell.messageTextView.textAlignment = NSTextAlignment.Right
+                cell.messageTextView.textAlignment = .Right
+                cell.timeStampLabel.textAlignment = .Right
                 cell.bubbleImageView.image = UIImage(named: "Right_bubble.png")
                 cell.messageLeadingConstraint.active = false
                 cell.messageTrailingConstraint.active = true
             } else {
-                cell.messageTextView.textAlignment = NSTextAlignment.Left
+                cell.messageTextView.textAlignment = .Left
+                cell.timeStampLabel.textAlignment = .Left
                 cell.bubbleImageView.image = UIImage(named: "Left_bubble.png")
                 cell.messageLeadingConstraint.active = true
                 cell.messageTrailingConstraint.active = false
@@ -202,6 +206,12 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.messageWidthConstraint.constant = self.view.frame.size.width/2
                 cell.messageImageView?.image = UIImage(data: messageImageData)
                 cell.messageTextView.text = nil
+            }
+            cell.timeStampLabel.text = nil
+            if let timestamp = message.timestamp {
+                if indexPath.row == 0 || (thread?.messages![indexPath.row-1] as! JCMessage).timestamp!.minutesFrom(timestamp) < -5 {
+                    cell.timeStampLabel.text = timestamp.stringFromDate()
+                }
             }
         }
         return cell
@@ -231,7 +241,7 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
         let style = NSParagraphStyle.defaultParagraphStyle().mutableCopy() as! NSMutableParagraphStyle
         let attributes = [NSFontAttributeName: UIFont.systemFontOfSize(17), NSParagraphStyleAttributeName: style]
         let rect = text.boundingRectWithSize(CGSize(width: UIScreen.mainScreen().bounds.size.width*(2/3), height: CGFloat.max), options: [NSStringDrawingOptions.UsesLineFragmentOrigin, NSStringDrawingOptions.UsesFontLeading], attributes: attributes, context: nil)
-        let paddedRect = CGRectMake(0, 0, rect.width+70, rect.height+50)
+        let paddedRect = CGRectMake(0, 0, rect.width+50, rect.height+70)
         return paddedRect
     }
     
@@ -314,7 +324,8 @@ extension ChatViewController: UIImagePickerControllerDelegate, UINavigationContr
         message.isSender = true
         message.thread = self.thread
         
-        self.thread!.messages?.mutableCopy().addObject(message)
+        thread!.messages?.mutableCopy().addObject(message)
+        thread!.updatedAt = message.timestamp
         do {
             try self.managedContext.save()
         } catch let error as NSError  {
@@ -356,5 +367,11 @@ extension UIImage {
         let normalizedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return normalizedImage
+    }
+}
+
+extension NSDate {
+    func minutesFrom(date:NSDate) -> Int {
+        return NSCalendar.currentCalendar().components(NSCalendarUnit.Minute, fromDate: date, toDate: self, options: []).minute
     }
 }

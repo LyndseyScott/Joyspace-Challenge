@@ -7,23 +7,67 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		042894311C5AE4D40045B8B7 /* Left_bubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 0428942F1C5AE4D40045B8B7 /* Left_bubble.png */; };
+		042894321C5AE4D40045B8B7 /* Right_bubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 042894301C5AE4D40045B8B7 /* Right_bubble.png */; };
+		042894351C5AE59B0045B8B7 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042894331C5AE59B0045B8B7 /* MessageTableViewCell.swift */; };
+		042894361C5AE59B0045B8B7 /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042894341C5AE59B0045B8B7 /* MessageTableViewCell.xib */; };
+		042894531C5B25260045B8B7 /* JCMessage+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428944F1C5B25260045B8B7 /* JCMessage+CoreDataProperties.swift */; };
+		042894541C5B25260045B8B7 /* JCMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042894501C5B25260045B8B7 /* JCMessage.swift */; };
+		042894551C5B25260045B8B7 /* JCThread+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042894511C5B25260045B8B7 /* JCThread+CoreDataProperties.swift */; };
+		042894561C5B25260045B8B7 /* JCThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042894521C5B25260045B8B7 /* JCThread.swift */; };
+		042894691C5BA74F0045B8B7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 042894681C5BA74F0045B8B7 /* CFNetwork.framework */; };
+		0428946B1C5BA7550045B8B7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0428946A1C5BA7550045B8B7 /* Security.framework */; };
+		0428946D1C5BA75B0045B8B7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0428946C1C5BA75B0045B8B7 /* Foundation.framework */; };
+		0428946F1C5BA7610045B8B7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0428946E1C5BA7610045B8B7 /* UIKit.framework */; };
+		042894711C5BA7660045B8B7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 042894701C5BA7660045B8B7 /* CoreGraphics.framework */; };
+		042894A61C5BAFC70045B8B7 /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 042894A21C5BAE2D0045B8B7 /* SRWebSocket.m */; };
+		042894A81C5BB1E90045B8B7 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 042894A71C5BB1E90045B8B7 /* libicucore.tbd */; };
+		042894AC1C5BD09D0045B8B7 /* ImagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042894AA1C5BD09D0045B8B7 /* ImagePreviewViewController.swift */; };
+		042894AD1C5BD09D0045B8B7 /* ImagePreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042894AB1C5BD09D0045B8B7 /* ImagePreviewViewController.xib */; };
 		04CF7D251C5A86ED006E1F16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF7D241C5A86ED006E1F16 /* AppDelegate.swift */; };
-		04CF7D271C5A86ED006E1F16 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF7D261C5A86ED006E1F16 /* ViewController.swift */; };
 		04CF7D2A1C5A86ED006E1F16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04CF7D281C5A86ED006E1F16 /* Main.storyboard */; };
 		04CF7D2D1C5A86ED006E1F16 /* Joyspace_Challenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04CF7D2B1C5A86ED006E1F16 /* Joyspace_Challenge.xcdatamodeld */; };
 		04CF7D2F1C5A86ED006E1F16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04CF7D2E1C5A86ED006E1F16 /* Assets.xcassets */; };
 		04CF7D321C5A86EE006E1F16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04CF7D301C5A86EE006E1F16 /* LaunchScreen.storyboard */; };
+		04CF7D3A1C5A8B8A006E1F16 /* ThreadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF7D391C5A8B8A006E1F16 /* ThreadViewController.swift */; };
+		04CF7D3C1C5A8B95006E1F16 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF7D3B1C5A8B95006E1F16 /* ChatViewController.swift */; };
+		04CF7D431C5A9443006E1F16 /* ThreadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF7D3F1C5A8DF0006E1F16 /* ThreadTableViewCell.swift */; };
+		04CF7D441C5A9449006E1F16 /* ThreadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CF7D401C5A8DF0006E1F16 /* ThreadTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0428942F1C5AE4D40045B8B7 /* Left_bubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Left_bubble.png; sourceTree = "<group>"; };
+		042894301C5AE4D40045B8B7 /* Right_bubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Right_bubble.png; sourceTree = "<group>"; };
+		042894331C5AE59B0045B8B7 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
+		042894341C5AE59B0045B8B7 /* MessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageTableViewCell.xib; sourceTree = "<group>"; };
+		0428944F1C5B25260045B8B7 /* JCMessage+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JCMessage+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		042894501C5B25260045B8B7 /* JCMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCMessage.swift; sourceTree = "<group>"; };
+		042894511C5B25260045B8B7 /* JCThread+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JCThread+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		042894521C5B25260045B8B7 /* JCThread.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCThread.swift; sourceTree = "<group>"; };
+		042894681C5BA74F0045B8B7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		0428946A1C5BA7550045B8B7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		0428946C1C5BA75B0045B8B7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0428946E1C5BA7610045B8B7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		042894701C5BA7660045B8B7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		0428949F1C5BAE2D0045B8B7 /* SocketRocket-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SocketRocket-Prefix.pch"; sourceTree = "<group>"; };
+		042894A01C5BAE2D0045B8B7 /* SocketRocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketRocket.h; sourceTree = "<group>"; };
+		042894A11C5BAE2D0045B8B7 /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
+		042894A21C5BAE2D0045B8B7 /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
+		042894A51C5BAEF30045B8B7 /* Joyspace Challenge-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Joyspace Challenge-Bridging-Header.h"; sourceTree = "<group>"; };
+		042894A71C5BB1E90045B8B7 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		042894AA1C5BD09D0045B8B7 /* ImagePreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewController.swift; sourceTree = "<group>"; };
+		042894AB1C5BD09D0045B8B7 /* ImagePreviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImagePreviewViewController.xib; sourceTree = "<group>"; };
 		04CF7D211C5A86ED006E1F16 /* Joyspace Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Joyspace Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04CF7D241C5A86ED006E1F16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		04CF7D261C5A86ED006E1F16 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		04CF7D291C5A86ED006E1F16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04CF7D2C1C5A86ED006E1F16 /* Joyspace_Challenge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Joyspace_Challenge.xcdatamodel; sourceTree = "<group>"; };
 		04CF7D2E1C5A86ED006E1F16 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04CF7D311C5A86EE006E1F16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04CF7D331C5A86EE006E1F16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04CF7D391C5A8B8A006E1F16 /* ThreadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadViewController.swift; sourceTree = "<group>"; };
+		04CF7D3B1C5A8B95006E1F16 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		04CF7D3F1C5A8DF0006E1F16 /* ThreadTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadTableViewCell.swift; sourceTree = "<group>"; };
+		04CF7D401C5A8DF0006E1F16 /* ThreadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThreadTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,15 +75,63 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				042894A81C5BB1E90045B8B7 /* libicucore.tbd in Frameworks */,
+				042894711C5BA7660045B8B7 /* CoreGraphics.framework in Frameworks */,
+				0428946F1C5BA7610045B8B7 /* UIKit.framework in Frameworks */,
+				0428946D1C5BA75B0045B8B7 /* Foundation.framework in Frameworks */,
+				0428946B1C5BA7550045B8B7 /* Security.framework in Frameworks */,
+				042894691C5BA74F0045B8B7 /* CFNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0428942E1C5A9B560045B8B7 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				04CF7D3F1C5A8DF0006E1F16 /* ThreadTableViewCell.swift */,
+				04CF7D401C5A8DF0006E1F16 /* ThreadTableViewCell.xib */,
+				042894331C5AE59B0045B8B7 /* MessageTableViewCell.swift */,
+				042894341C5AE59B0045B8B7 /* MessageTableViewCell.xib */,
+			);
+			name = "Custom Cells";
+			sourceTree = "<group>";
+		};
+		042894571C5B25710045B8B7 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				04CF7D2B1C5A86ED006E1F16 /* Joyspace_Challenge.xcdatamodeld */,
+				0428944F1C5B25260045B8B7 /* JCMessage+CoreDataProperties.swift */,
+				042894501C5B25260045B8B7 /* JCMessage.swift */,
+				042894511C5B25260045B8B7 /* JCThread+CoreDataProperties.swift */,
+				042894521C5B25260045B8B7 /* JCThread.swift */,
+			);
+			name = "Core Data";
+			path = ..;
+			sourceTree = "<group>";
+		};
+		042894A91C5BB1FC0045B8B7 /* SocketRocket */ = {
+			isa = PBXGroup;
+			children = (
+				0428949F1C5BAE2D0045B8B7 /* SocketRocket-Prefix.pch */,
+				042894A01C5BAE2D0045B8B7 /* SocketRocket.h */,
+				042894A11C5BAE2D0045B8B7 /* SRWebSocket.h */,
+				042894A21C5BAE2D0045B8B7 /* SRWebSocket.m */,
+				042894A51C5BAEF30045B8B7 /* Joyspace Challenge-Bridging-Header.h */,
+			);
+			name = SocketRocket;
+			sourceTree = "<group>";
+		};
 		04CF7D181C5A86ED006E1F16 = {
 			isa = PBXGroup;
 			children = (
+				042894A71C5BB1E90045B8B7 /* libicucore.tbd */,
+				042894701C5BA7660045B8B7 /* CoreGraphics.framework */,
+				0428946E1C5BA7610045B8B7 /* UIKit.framework */,
+				0428946C1C5BA75B0045B8B7 /* Foundation.framework */,
+				0428946A1C5BA7550045B8B7 /* Security.framework */,
+				042894681C5BA74F0045B8B7 /* CFNetwork.framework */,
 				04CF7D231C5A86ED006E1F16 /* Joyspace Challenge */,
 				04CF7D221C5A86ED006E1F16 /* Products */,
 			);
@@ -57,12 +149,19 @@
 			isa = PBXGroup;
 			children = (
 				04CF7D241C5A86ED006E1F16 /* AppDelegate.swift */,
-				04CF7D261C5A86ED006E1F16 /* ViewController.swift */,
+				04CF7D391C5A8B8A006E1F16 /* ThreadViewController.swift */,
+				04CF7D3B1C5A8B95006E1F16 /* ChatViewController.swift */,
+				042894AA1C5BD09D0045B8B7 /* ImagePreviewViewController.swift */,
+				042894AB1C5BD09D0045B8B7 /* ImagePreviewViewController.xib */,
 				04CF7D281C5A86ED006E1F16 /* Main.storyboard */,
+				0428942F1C5AE4D40045B8B7 /* Left_bubble.png */,
+				042894301C5AE4D40045B8B7 /* Right_bubble.png */,
+				042894571C5B25710045B8B7 /* Core Data */,
+				0428942E1C5A9B560045B8B7 /* Custom Cells */,
+				042894A91C5BB1FC0045B8B7 /* SocketRocket */,
 				04CF7D2E1C5A86ED006E1F16 /* Assets.xcassets */,
 				04CF7D301C5A86EE006E1F16 /* LaunchScreen.storyboard */,
 				04CF7D331C5A86EE006E1F16 /* Info.plist */,
-				04CF7D2B1C5A86ED006E1F16 /* Joyspace_Challenge.xcdatamodeld */,
 			);
 			path = "Joyspace Challenge";
 			sourceTree = "<group>";
@@ -125,9 +224,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				042894311C5AE4D40045B8B7 /* Left_bubble.png in Resources */,
+				042894361C5AE59B0045B8B7 /* MessageTableViewCell.xib in Resources */,
 				04CF7D321C5A86EE006E1F16 /* LaunchScreen.storyboard in Resources */,
+				042894AD1C5BD09D0045B8B7 /* ImagePreviewViewController.xib in Resources */,
 				04CF7D2F1C5A86ED006E1F16 /* Assets.xcassets in Resources */,
 				04CF7D2A1C5A86ED006E1F16 /* Main.storyboard in Resources */,
+				042894321C5AE4D40045B8B7 /* Right_bubble.png in Resources */,
+				04CF7D441C5A9449006E1F16 /* ThreadTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,9 +242,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04CF7D3A1C5A8B8A006E1F16 /* ThreadViewController.swift in Sources */,
 				04CF7D2D1C5A86ED006E1F16 /* Joyspace_Challenge.xcdatamodeld in Sources */,
-				04CF7D271C5A86ED006E1F16 /* ViewController.swift in Sources */,
+				042894351C5AE59B0045B8B7 /* MessageTableViewCell.swift in Sources */,
+				04CF7D3C1C5A8B95006E1F16 /* ChatViewController.swift in Sources */,
+				042894531C5B25260045B8B7 /* JCMessage+CoreDataProperties.swift in Sources */,
+				042894A61C5BAFC70045B8B7 /* SRWebSocket.m in Sources */,
+				042894561C5B25260045B8B7 /* JCThread.swift in Sources */,
+				042894551C5B25260045B8B7 /* JCThread+CoreDataProperties.swift in Sources */,
+				042894541C5B25260045B8B7 /* JCMessage.swift in Sources */,
 				04CF7D251C5A86ED006E1F16 /* AppDelegate.swift in Sources */,
+				042894AC1C5BD09D0045B8B7 /* ImagePreviewViewController.swift in Sources */,
+				04CF7D431C5A9443006E1F16 /* ThreadTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,10 +364,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "Joyspace Challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "StandableInc.Joyspace-Challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Joyspace Challenge/Joyspace Challenge-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -262,10 +378,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "Joyspace Challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "StandableInc.Joyspace-Challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Joyspace Challenge/Joyspace Challenge-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -288,6 +406,7 @@
 				04CF7D381C5A86EE006E1F16 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
@@ -298,7 +417,8 @@
 				04CF7D2C1C5A86ED006E1F16 /* Joyspace_Challenge.xcdatamodel */,
 			);
 			currentVersion = 04CF7D2C1C5A86ED006E1F16 /* Joyspace_Challenge.xcdatamodel */;
-			path = Joyspace_Challenge.xcdatamodeld;
+			name = Joyspace_Challenge.xcdatamodeld;
+			path = "Joyspace Challenge/Joyspace_Challenge.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

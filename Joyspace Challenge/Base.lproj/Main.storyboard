@@ -1,25 +1,152 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XaM-zF-v6B">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="yF2-5Q-snN">
+            <objects>
+                <navigationController id="XaM-zF-v6B" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FsJ-To-1JF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Wsh-jx-azP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="igj-k2-d7J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-102" y="418"/>
+        </scene>
+        <!--Thread View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ThreadViewController" customModule="Joyspace_Challenge" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gcO-hf-gT3">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="3Pq-AE-4G8"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="vhX-jl-sAA"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gcO-hf-gT3" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="5pl-KN-Q4B"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gcO-hf-gT3" secondAttribute="bottom" id="IaX-15-lgx"/>
+                            <constraint firstAttribute="trailing" secondItem="gcO-hf-gT3" secondAttribute="trailing" id="kcl-Bg-LxN"/>
+                            <constraint firstItem="gcO-hf-gT3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="wi0-Vw-S9N"/>
+                            <constraint firstItem="gcO-hf-gT3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="xHg-nb-Jgk"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="wi0-Vw-S9N"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="I6V-cn-peI">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="2t8-sd-sT9">
+                            <connections>
+                                <action selector="createNewThread:" destination="BYZ-38-t0r" id="CDR-Qp-UYd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="tableView" destination="gcO-hf-gT3" id="Wjs-JV-fPf"/>
+                        <segue destination="CLg-jD-IOF" kind="show" identifier="goToChat" id="9rD-4X-lB8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="302" y="418"/>
+        </scene>
+        <!--Chat View Controller-->
+        <scene sceneID="1vE-Wb-1hz">
+            <objects>
+                <viewController id="CLg-jD-IOF" customClass="ChatViewController" customModule="Joyspace_Challenge" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zgh-mA-SG0"/>
+                        <viewControllerLayoutGuide type="bottom" id="gzi-AF-jRB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sc2-hB-vJ9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sVK-3d-Pzi">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="yVI-KO-RTT"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem systemItem="camera" id="DmC-Pl-abJ">
+                                        <connections>
+                                            <action selector="addPhoto:" destination="CLg-jD-IOF" id="2Uq-MT-BQF"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" id="7b6-OP-pY7">
+                                        <textField key="customView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="sw6-bx-Vzg">
+                                            <rect key="frame" x="51" y="7" width="212" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <action selector="textFieldEndEditing:" destination="CLg-jD-IOF" eventType="editingDidEndOnExit" id="LrG-YJ-uez"/>
+                                                <outlet property="delegate" destination="CLg-jD-IOF" id="WH4-kb-Fj8"/>
+                                            </connections>
+                                        </textField>
+                                    </barButtonItem>
+                                    <barButtonItem title="Send" id="Qef-H3-vGD">
+                                        <connections>
+                                            <action selector="sendMessage:" destination="CLg-jD-IOF" id="56s-lY-MVI"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uzk-Hz-rzk">
+                                <rect key="frame" x="0.0" y="64" width="320" height="460"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="CLg-jD-IOF" id="naC-L2-d5y"/>
+                                    <outlet property="delegate" destination="CLg-jD-IOF" id="pao-RD-d3y"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="uzk-Hz-rzk" firstAttribute="leading" secondItem="sc2-hB-vJ9" secondAttribute="leading" id="1kc-hN-df4"/>
+                            <constraint firstItem="sVK-3d-Pzi" firstAttribute="top" secondItem="uzk-Hz-rzk" secondAttribute="bottom" id="7Vb-PD-p9q"/>
+                            <constraint firstAttribute="trailing" secondItem="sVK-3d-Pzi" secondAttribute="trailing" id="LLS-TZ-4ib"/>
+                            <constraint firstItem="uzk-Hz-rzk" firstAttribute="top" secondItem="zgh-mA-SG0" secondAttribute="bottom" id="U07-Ly-ANv"/>
+                            <constraint firstAttribute="trailing" secondItem="uzk-Hz-rzk" secondAttribute="trailing" id="d4t-Xf-ihA"/>
+                            <constraint firstItem="gzi-AF-jRB" firstAttribute="top" secondItem="sVK-3d-Pzi" secondAttribute="bottom" id="rZq-Dg-SRN"/>
+                            <constraint firstItem="sVK-3d-Pzi" firstAttribute="leading" secondItem="sc2-hB-vJ9" secondAttribute="leading" id="yxC-kM-ND6"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="chatTableView" destination="uzk-Hz-rzk" id="ySE-rK-Yoo"/>
+                        <outlet property="chatTextField" destination="sw6-bx-Vzg" id="ld3-0r-au0"/>
+                        <outlet property="toolbarBottomConstraint" destination="rZq-Dg-SRN" id="bNJ-Vf-gUP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xKt-5i-lmc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="666" y="418"/>
         </scene>
     </scenes>
 </document>

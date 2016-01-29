@@ -241,7 +241,7 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
         let style = NSParagraphStyle.defaultParagraphStyle().mutableCopy() as! NSMutableParagraphStyle
         let attributes = [NSFontAttributeName: UIFont.systemFontOfSize(17), NSParagraphStyleAttributeName: style]
         let rect = text.boundingRectWithSize(CGSize(width: UIScreen.mainScreen().bounds.size.width*(2/3), height: CGFloat.max), options: [NSStringDrawingOptions.UsesLineFragmentOrigin, NSStringDrawingOptions.UsesFontLeading], attributes: attributes, context: nil)
-        let paddedRect = CGRectMake(0, 0, rect.width+60, rect.height+70)
+        let paddedRect = CGRectMake(0, 0, rect.width+70, rect.height+70)
         return paddedRect
     }
     

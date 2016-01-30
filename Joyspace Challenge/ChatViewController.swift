@@ -282,7 +282,7 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func scrollTableToBottom(withAnimation animated:Bool) {
-        if let count = thread?.messages?.count where count > 0 {
+        if let count = thread?.messages?.count where count > 0 && chatTableView.numberOfRowsInSection(0) > count-1 {
             chatTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: count-1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: animated)
         }
     }
@@ -348,9 +348,13 @@ extension ChatViewController: UIImagePickerControllerDelegate, UINavigationContr
         }
     }
     
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     func sendImage(image:UIImage) {
         closeImagePreview()
-
+        
         let entity =  NSEntityDescription.entityForName("JCMessage",
             inManagedObjectContext:self.managedContext)
         let message = NSManagedObject(entity: entity!,
@@ -383,10 +387,6 @@ extension ChatViewController: UIImagePickerControllerDelegate, UINavigationContr
                     self.imagePreviewView = nil
             }
         }
-    }
-    
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        dismissViewControllerAnimated(true, completion: nil)
     }
 }
 

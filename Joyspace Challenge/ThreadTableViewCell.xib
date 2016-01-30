@@ -28,20 +28,20 @@
                             <constraint firstAttribute="height" constant="30" id="XjD-vi-py6"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="done"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="done"/>
                         <connections>
                             <action selector="titleFinished:" destination="KGk-i7-Jjw" eventType="editingDidEndOnExit" id="hkc-jr-VlP"/>
                             <outlet property="delegate" destination="-1" id="WVB-aK-Y1p"/>
                         </connections>
                     </textField>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wvk-ZK-Fxn">
-                        <rect key="frame" x="18" y="38" width="284" height="16"/>
+                        <rect key="frame" x="18" y="43" width="284" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dlu-gX-jdo">
-                        <rect key="frame" x="283.5" y="93.5" width="28.5" height="16"/>
+                        <rect key="frame" x="283" y="93" width="28.5" height="16"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="tvP-38-cYD"/>
                         </constraints>
@@ -63,9 +63,10 @@
                     <constraint firstAttribute="bottomMargin" secondItem="dlu-gX-jdo" secondAttribute="bottom" id="hSL-PB-6Po"/>
                     <constraint firstItem="zh0-So-W1A" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="iR1-ke-eCe"/>
                     <constraint firstItem="dlu-gX-jdo" firstAttribute="top" secondItem="zh0-So-W1A" secondAttribute="bottom" constant="5" id="l8S-Sk-6th"/>
+                    <constraint firstItem="Wvk-ZK-Fxn" firstAttribute="height" relation="lessThanOrEqual" secondItem="zh0-So-W1A" secondAttribute="height" id="lAV-4N-gpc"/>
                     <constraint firstAttribute="trailingMargin" secondItem="si6-eF-Jpg" secondAttribute="trailing" constant="10" id="tv5-Xa-gqq"/>
                     <constraint firstItem="si6-eF-Jpg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="yWm-Bq-ygN"/>
-                    <constraint firstItem="Wvk-ZK-Fxn" firstAttribute="top" secondItem="si6-eF-Jpg" secondAttribute="bottom" id="zNz-tq-52Y"/>
+                    <constraint firstItem="Wvk-ZK-Fxn" firstAttribute="top" secondItem="si6-eF-Jpg" secondAttribute="bottom" constant="5" id="zNz-tq-52Y"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">

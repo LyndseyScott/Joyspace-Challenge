@@ -86,8 +86,8 @@ class ThreadViewController: UIViewController, ThreadDelegate {
     }
     
     func noTitleEntered() {
-        let alert = UIAlertController(title: "Uh-Oh",
-            message: "The title must be at least 1 character long.", preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: "Uh-oh",
+            message: "The title must be at least 1 character long. Either type a longer title or swipe the row left to delete this new chat thread.", preferredStyle: UIAlertControllerStyle.Alert)
         let okButton = UIAlertAction(title: "OK",
             style: .Default) { (alert) -> Void in
         }
@@ -220,7 +220,7 @@ extension ThreadViewController: UITableViewDelegate, UITableViewDataSource {
 extension NSDate {
     func stringFromDate() -> String? {
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "MM-dd-yyyy, HH:mm:ss"
+        dateFormatter.dateFormat = "MM/dd/yyyy, h:mm:ss a"
         let dateString = dateFormatter.stringFromDate(self)
         return dateString
     }

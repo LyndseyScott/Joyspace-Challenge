@@ -29,6 +29,7 @@ class ChatViewController: UIViewController, ChatDelegate {
     var connectionLabel:UILabel?
     var imagePreviewView:ImagePreviewViewController?
     var zoomView:UIImageView?
+    var refreshingConnection:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +40,9 @@ class ChatViewController: UIViewController, ChatDelegate {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: "textFieldEndEditing:")
         chatTableView.addGestureRecognizer(tapGesture)
+        
+        let refreshButton = UIBarButtonItem(image: UIImage(named: "refresh_icon.png"), style: .Plain, target: self, action: "refreshConnection")
+        self.navigationItem.rightBarButtonItem = refreshButton
         
         socketConnect()
     }
@@ -62,25 +66,29 @@ class ChatViewController: UIViewController, ChatDelegate {
     @IBAction func sendMessage(sender: AnyObject) {
         view.endEditing(true)
         if let textMessage = self.chatTextField.text where textMessage.characters.count > 0 {
-            let entity =  NSEntityDescription.entityForName("JCMessage",
-                inManagedObjectContext:managedContext)
-            let message = NSManagedObject(entity: entity!,
-                insertIntoManagedObjectContext: managedContext) as! JCMessage
-            message.text = textMessage
-            message.timestamp = NSDate()
-            message.isSender = true
-            message.thread = thread
-            
-            thread!.messages?.mutableCopy().addObject(message)
-            thread!.updatedAt = message.timestamp
-            do {
-                try managedContext.save()
-            } catch let error as NSError  {
-                print("Could not save \(error), \(error.userInfo)")
+            if socketConnected == true {
+                let entity =  NSEntityDescription.entityForName("JCMessage",
+                    inManagedObjectContext:managedContext)
+                let message = NSManagedObject(entity: entity!,
+                    insertIntoManagedObjectContext: managedContext) as! JCMessage
+                message.text = textMessage
+                message.timestamp = NSDate()
+                message.isSender = true
+                message.thread = thread
+                
+                thread!.messages?.mutableCopy().addObject(message)
+                thread!.updatedAt = message.timestamp
+                do {
+                    try managedContext.save()
+                } catch let error as NSError  {
+                    print("Could not save \(error), \(error.userInfo)")
+                }
+                chatTableView.reloadData()
+                chatTextField.text = nil
+                socketIO?.send(textMessage)
+            } else {
+                displayNotConnectedAlert()
             }
-            chatTableView.reloadData()
-            chatTextField.text = nil
-            socketIO?.send(textMessage)
         }
     }
     
@@ -186,7 +194,31 @@ extension ChatViewController:SRWebSocketDelegate {
     func webSocket(webSocket: SRWebSocket!, didCloseWithCode code: Int, reason: String!, wasClean: Bool) {
         print("WebSocket closed")
         socketConnected = false
-        updateConnectionLabel()
+        if refreshingConnection == true {
+            socketIO = nil
+            socketConnect()
+            refreshingConnection = false
+        } else {
+            updateConnectionLabel()
+        }
+    }
+    
+    func refreshConnection() {
+        connectionLabel?.text = nil
+        refreshingConnection = true
+        socketIO?.close()
+    }
+    
+    func displayNotConnectedAlert() {
+        let alert = UIAlertController(title: "Uh-oh",
+            message: "We're having trouble connecting to the server. Please try sending your message a bit later.", preferredStyle: UIAlertControllerStyle.Alert)
+        let okButton = UIAlertAction(title: "OK",
+            style: .Default) { (alert) -> Void in
+        }
+        alert.addAction(okButton)
+        
+        presentViewController(alert, animated: true,
+            completion: nil)
     }
 }
 
@@ -267,9 +299,11 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
     
     func updateConnectionLabel() {
         if socketConnected == true {
-            connectionLabel!.text = "Connected."
+            connectionLabel?.text = "Connected."
         } else if socketConnected == false {
-            connectionLabel!.text = "Disconnected."
+            connectionLabel?.text = "Disconnected."
+        } else {
+            connectionLabel?.text = nil
         }
     }
     
@@ -355,26 +389,30 @@ extension ChatViewController: UIImagePickerControllerDelegate, UINavigationContr
     func sendImage(image:UIImage) {
         closeImagePreview()
         
-        let entity =  NSEntityDescription.entityForName("JCMessage",
-            inManagedObjectContext:self.managedContext)
-        let message = NSManagedObject(entity: entity!,
-            insertIntoManagedObjectContext: self.managedContext) as! JCMessage
-        message.image = UIImagePNGRepresentation(image)
-        message.timestamp = NSDate()
-        message.isSender = true
-        message.thread = self.thread
-        
-        thread!.messages?.mutableCopy().addObject(message)
-        thread!.updatedAt = message.timestamp
-        do {
-            try self.managedContext.save()
-        } catch let error as NSError  {
-            print("Could not save \(error), \(error.userInfo)")
+        if socketConnected == true {
+            let entity =  NSEntityDescription.entityForName("JCMessage",
+                inManagedObjectContext:self.managedContext)
+            let message = NSManagedObject(entity: entity!,
+                insertIntoManagedObjectContext: self.managedContext) as! JCMessage
+            message.image = UIImagePNGRepresentation(image)
+            message.timestamp = NSDate()
+            message.isSender = true
+            message.thread = self.thread
+            
+            thread!.messages?.mutableCopy().addObject(message)
+            thread!.updatedAt = message.timestamp
+            do {
+                try self.managedContext.save()
+            } catch let error as NSError  {
+                print("Could not save \(error), \(error.userInfo)")
+            }
+            chatTableView.reloadData()
+            chatTextField.text = nil
+            
+            scrollTableToBottom(withAnimation: true)
+        } else {
+            displayNotConnectedAlert()
         }
-        self.chatTableView.reloadData()
-        self.chatTextField.text = nil
-        
-        self.scrollTableToBottom(withAnimation: true)
     }
     
     func closeImagePreview() {

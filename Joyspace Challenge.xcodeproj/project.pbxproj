@@ -25,6 +25,7 @@
 		042894AC1C5BD09D0045B8B7 /* ImagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042894AA1C5BD09D0045B8B7 /* ImagePreviewViewController.swift */; };
 		042894AD1C5BD09D0045B8B7 /* ImagePreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042894AB1C5BD09D0045B8B7 /* ImagePreviewViewController.xib */; };
 		042894B71C5C59B90045B8B7 /* Joyspace_launch.png in Resources */ = {isa = PBXBuildFile; fileRef = 042894B61C5C59B90045B8B7 /* Joyspace_launch.png */; };
+		042894B91C5C6FC50045B8B7 /* refresh_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 042894B81C5C6FC50045B8B7 /* refresh_icon.png */; };
 		04CF7D251C5A86ED006E1F16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF7D241C5A86ED006E1F16 /* AppDelegate.swift */; };
 		04CF7D2A1C5A86ED006E1F16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04CF7D281C5A86ED006E1F16 /* Main.storyboard */; };
 		04CF7D2D1C5A86ED006E1F16 /* Joyspace_Challenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04CF7D2B1C5A86ED006E1F16 /* Joyspace_Challenge.xcdatamodeld */; };
@@ -59,6 +60,7 @@
 		042894AA1C5BD09D0045B8B7 /* ImagePreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewController.swift; sourceTree = "<group>"; };
 		042894AB1C5BD09D0045B8B7 /* ImagePreviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImagePreviewViewController.xib; sourceTree = "<group>"; };
 		042894B61C5C59B90045B8B7 /* Joyspace_launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Joyspace_launch.png; sourceTree = "<group>"; };
+		042894B81C5C6FC50045B8B7 /* refresh_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh_icon.png; sourceTree = "<group>"; };
 		04CF7D211C5A86ED006E1F16 /* Joyspace Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Joyspace Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04CF7D241C5A86ED006E1F16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04CF7D291C5A86ED006E1F16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				0428942F1C5AE4D40045B8B7 /* Left_bubble.png */,
 				042894301C5AE4D40045B8B7 /* Right_bubble.png */,
 				042894B61C5C59B90045B8B7 /* Joyspace_launch.png */,
+				042894B81C5C6FC50045B8B7 /* refresh_icon.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 			files = (
 				042894311C5AE4D40045B8B7 /* Left_bubble.png in Resources */,
 				042894B71C5C59B90045B8B7 /* Joyspace_launch.png in Resources */,
+				042894B91C5C6FC50045B8B7 /* refresh_icon.png in Resources */,
 				042894361C5AE59B0045B8B7 /* MessageTableViewCell.xib in Resources */,
 				04CF7D321C5A86EE006E1F16 /* LaunchScreen.storyboard in Resources */,
 				042894AD1C5BD09D0045B8B7 /* ImagePreviewViewController.xib in Resources */,

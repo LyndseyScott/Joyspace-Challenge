@@ -107,6 +107,7 @@ class ChatViewController: UIViewController, ChatDelegate {
     
     func zoomImage(image: UIImage) {
         if zoomView == nil {
+            view.endEditing(true)
             zoomView = UIImageView(frame: self.view.frame)
             zoomView?.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.75)
             zoomView?.contentMode = .ScaleAspectFit
@@ -276,7 +277,7 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
         let style = NSParagraphStyle.defaultParagraphStyle().mutableCopy() as! NSMutableParagraphStyle
         let attributes = [NSFontAttributeName: UIFont.systemFontOfSize(14), NSParagraphStyleAttributeName: style]
         let rect = text.boundingRectWithSize(CGSize(width: UIScreen.mainScreen().bounds.size.width*(2/3), height: CGFloat.max), options: [NSStringDrawingOptions.UsesLineFragmentOrigin, NSStringDrawingOptions.UsesFontLeading], attributes: attributes, context: nil)
-        let paddedRect = CGRectMake(0, 0, rect.width+80, rect.height+90)
+        let paddedRect = CGRectMake(0, 0, rect.width+90, rect.height+90)
         return paddedRect
     }
     

@@ -324,6 +324,7 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension ChatViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBAction func addPhoto(sender: AnyObject) {
+        self.view.endEditing(true)
         let imagePickerActionSheet = UIAlertController(title: "Snap/Upload Photo",
             message: nil, preferredStyle: .ActionSheet)
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {

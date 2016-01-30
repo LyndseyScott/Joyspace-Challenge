@@ -163,7 +163,7 @@ extension ThreadViewController: UITableViewDelegate, UITableViewDataSource {
             cell.textLabel?.textAlignment = NSTextAlignment.Center
             cell.userInteractionEnabled = false
             
-            let string = "Click + to start chatting!"
+            let string = "Click + to create a new chat thread"
             let mutableString = NSMutableAttributedString(string: string, attributes: [NSFontAttributeName:UIFont.systemFontOfSize(14)])
             let range = (string as NSString).rangeOfString("+")
             mutableString.addAttribute(NSForegroundColorAttributeName, value: self.view.tintColor, range: range)

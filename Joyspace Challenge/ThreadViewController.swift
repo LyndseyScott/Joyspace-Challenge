@@ -174,12 +174,14 @@ extension ThreadViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if (threads.count == 0 || threads[0].title != nil) && (selectedThread?.title != nil || selectedThread == nil) {
-            selectedThread = threads[indexPath.row]
-            performSegueWithIdentifier("goToChat", sender: self)
-        } else if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as? ThreadTableViewCell where threads[0].title == nil {
-            cell.titleFinished(nil)
+        if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as? ThreadTableViewCell {
+            if cell.titleField.isFirstResponder() {
+                cell.titleFinished(nil)
+                return
+            }
         }
+        selectedThread = threads[indexPath.row]
+        performSegueWithIdentifier("goToChat", sender: self)
     }
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

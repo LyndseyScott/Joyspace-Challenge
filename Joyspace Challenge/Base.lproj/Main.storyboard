@@ -104,7 +104,7 @@
                                             <rect key="frame" x="54" y="7" width="212" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             <connections>
                                                 <action selector="textFieldEndEditing:" destination="CLg-jD-IOF" eventType="editingDidEndOnExit" id="LrG-YJ-uez"/>
                                                 <outlet property="delegate" destination="CLg-jD-IOF" id="WH4-kb-Fj8"/>

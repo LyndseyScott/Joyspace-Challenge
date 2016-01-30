@@ -113,17 +113,13 @@ extension ChatViewController:SRWebSocketDelegate {
     func webSocketDidOpen(webSocket:SRWebSocket){
         print("Websocket Connected");
         socketConnected = true
-        if connectionLabel != nil {
-            connectionLabel!.text = "Connected."
-        }
+        updateConnectionLabel()
     }
     
     func webSocket(webSocket:SRWebSocket, didFailWithError error:NSError){
         print("Websocket Failed With Error \(error)");
         socketConnected = false
-        if connectionLabel != nil {
-            connectionLabel!.text = "Disconnected."
-        }
+        updateConnectionLabel()
     }
     
     func webSocket(webSocket: SRWebSocket!, didReceiveMessage message: AnyObject!) {
@@ -156,9 +152,7 @@ extension ChatViewController:SRWebSocketDelegate {
     func webSocket(webSocket: SRWebSocket!, didCloseWithCode code: Int, reason: String!, wasClean: Bool) {
         print("WebSocket closed")
         socketConnected = false
-        if connectionLabel != nil {
-            connectionLabel!.text = "Disconnected."
-        }
+        updateConnectionLabel()
     }
 }
 
@@ -228,20 +222,24 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
         connectionLabel!.textColor = UIColor.whiteColor()
         connectionLabel?.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.75)
         
+        updateConnectionLabel()
+        
+        return connectionLabel
+    }
+    
+    func updateConnectionLabel() {
         if socketConnected == true {
             connectionLabel!.text = "Connected."
         } else if socketConnected == false {
             connectionLabel!.text = "Disconnected."
         }
-        
-        return connectionLabel
     }
     
     func calculateChatRect(text:String) -> CGRect {
         let style = NSParagraphStyle.defaultParagraphStyle().mutableCopy() as! NSMutableParagraphStyle
-        let attributes = [NSFontAttributeName: UIFont.systemFontOfSize(17), NSParagraphStyleAttributeName: style]
+        let attributes = [NSFontAttributeName: UIFont.systemFontOfSize(14), NSParagraphStyleAttributeName: style]
         let rect = text.boundingRectWithSize(CGSize(width: UIScreen.mainScreen().bounds.size.width*(2/3), height: CGFloat.max), options: [NSStringDrawingOptions.UsesLineFragmentOrigin, NSStringDrawingOptions.UsesFontLeading], attributes: attributes, context: nil)
-        let paddedRect = CGRectMake(0, 0, rect.width+70, rect.height+70)
+        let paddedRect = CGRectMake(0, 0, rect.width+65, rect.height+95)
         return paddedRect
     }
     

@@ -100,40 +100,62 @@ extension ThreadViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 120
     }
-
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return threads.count
+        if threads.count > 0 {
+            return threads.count
+        } else {
+            return 1
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ThreadTableViewCell", forIndexPath: indexPath) as! ThreadTableViewCell
-        cell.threadDelegate = self
-        if let title = threads[indexPath.row].title {
-            cell.titleField.text = title
-            cell.titleField.userInteractionEnabled = false
-        } else {
-            cell.titleField.text = nil
-            cell.titleField.userInteractionEnabled = true
-        }
-        cell.dateLabel.text = " "
-        if threads[indexPath.row].messages?.count > 0 {
-            if let message = threads[indexPath.row].messages?.lastObject as? JCMessage {
-                if let messageText = message.text {
-                    cell.lastMessageImageView.image = nil
-                    cell.lastMessageLabel.text = messageText
-                } else if let messageImageData = message.image {
-                    cell.lastMessageImageView.image = UIImage(data: messageImageData)
-                    cell.lastMessageLabel.text = nil
-                }
+        if threads.count > 0 {
+            let cell = tableView.dequeueReusableCellWithIdentifier("ThreadTableViewCell", forIndexPath: indexPath) as! ThreadTableViewCell
+            cell.threadDelegate = self
+            if let title = threads[indexPath.row].title {
+                cell.titleField.text = title
+                cell.titleField.userInteractionEnabled = false
+            } else {
+                cell.titleField.text = nil
+                cell.titleField.userInteractionEnabled = true
             }
+            cell.dateLabel.text = " "
+            if threads[indexPath.row].messages?.count > 0 {
+                if let message = threads[indexPath.row].messages?.lastObject as? JCMessage {
+                    if let messageText = message.text {
+                        cell.lastMessageImageView.image = nil
+                        cell.lastMessageLabel.text = messageText
+                    } else if let messageImageData = message.image {
+                        cell.lastMessageImageView.image = UIImage(data: messageImageData)
+                        cell.lastMessageLabel.text = nil
+                    }
+                }
+            } else {
+                cell.lastMessageImageView.image = nil
+                cell.lastMessageLabel.text = nil
+            }
+            if let timeStamp = threads[indexPath.row].updatedAt {
+                cell.dateLabel.text = timeStamp.stringFromDate()
+            }
+            cell.userInteractionEnabled = true
+            
+            return cell
         } else {
-            cell.lastMessageImageView.image = nil
-            cell.lastMessageLabel.text = nil
+            let cell = UITableViewCell()
+            cell.textLabel?.textAlignment = NSTextAlignment.Center
+            cell.userInteractionEnabled = false
+            
+            let string = "Click + to start chatting!"
+            let mutableString = NSMutableAttributedString(string: string, attributes: [NSFontAttributeName:UIFont.systemFontOfSize(14)])
+            let range = (string as NSString).rangeOfString("+")
+            mutableString.addAttribute(NSForegroundColorAttributeName, value: self.view.tintColor, range: range)
+            mutableString.addAttribute(NSFontAttributeName, value: UIFont.systemFontOfSize(20), range: range)
+
+            cell.textLabel?.attributedText = mutableString
+            
+            return cell
         }
-        if let timeStamp = threads[indexPath.row].updatedAt {
-            cell.dateLabel.text = timeStamp.stringFromDate()
-        }
-        return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -158,7 +180,6 @@ extension ThreadViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.titleField.userInteractionEnabled = true
                 cell.titleField.becomeFirstResponder()
             }
-            self.selectedThread = nil
         })
         renameAction.backgroundColor = UIColor.blueColor()
         
@@ -171,7 +192,7 @@ extension ThreadViewController: UITableViewDelegate, UITableViewDataSource {
             } catch let error as NSError  {
                 print("Could not save \(error), \(error.userInfo)")
             }
-            tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Automatic)
+            tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Top)
             self.selectedThread = nil
         })
 

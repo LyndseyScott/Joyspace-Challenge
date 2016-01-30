@@ -35,6 +35,7 @@ class ThreadTableViewCell: UITableViewCell {
         if titleField.text?.characters.count > 0 {
             self.endEditing(true)
             if thread?.title?.isEmpty == false {
+                titleField.userInteractionEnabled = false
                 thread?.title = titleField.text
                 do {
                     try managedContext.save()

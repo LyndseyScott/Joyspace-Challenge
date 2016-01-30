@@ -12,6 +12,8 @@ import CoreData
 protocol ChatDelegate {
     func sendImage(image:UIImage)
     func closeImagePreview()
+    func zoomImage(image:UIImage)
+    func closeImageZoom()
 }
 
 class ChatViewController: UIViewController, ChatDelegate {
@@ -26,9 +28,11 @@ class ChatViewController: UIViewController, ChatDelegate {
     var socketConnected:Bool?
     var connectionLabel:UILabel?
     var imagePreviewView:ImagePreviewViewController?
+    var zoomView:UIImageView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        chatTextField.frame = CGRectMake(60, 7, self.view.frame.size.width-120, 30)
         chatTableView.registerNib(UINib(nibName: "MessageTableViewCell", bundle: nil), forCellReuseIdentifier: "MessageTableViewCell")
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
@@ -99,6 +103,37 @@ class ChatViewController: UIViewController, ChatDelegate {
         UIView.animateWithDuration(0.35, animations: { () -> Void in
             self.view.layoutIfNeeded()
         })
+    }
+    
+    func zoomImage(image: UIImage) {
+        print("zoomImage")
+        if zoomView == nil {
+            zoomView = UIImageView(frame: self.view.frame)
+            zoomView?.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.75)
+            zoomView?.contentMode = .ScaleAspectFit
+            zoomView?.image = image
+            zoomView?.alpha = 0
+            
+            if let keyWindow = UIApplication.sharedApplication().keyWindow {
+                keyWindow.addSubview(self.zoomView!)
+                UIView.animateWithDuration(0.5, animations: {
+                    self.zoomView?.alpha = 1
+                    }) { (complete) -> Void in
+                }
+            }
+        }
+    }
+    
+    func closeImageZoom() {
+        print("closeImageZoom")
+        if zoomView != nil {
+            UIView.animateWithDuration(0.5, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: {
+                self.zoomView?.alpha = 0
+                }) { (complete) -> Void in
+                    self.zoomView?.removeFromSuperview()
+                    self.zoomView = nil
+            }
+        }
     }
 }
 
@@ -176,6 +211,8 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MessageTableViewCell", forIndexPath: indexPath) as! MessageTableViewCell
+        cell.chatDelegate = self
+        cell.addZoomGestureToImage()
         if let message = thread?.messages![indexPath.row] as? JCMessage {
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             if message.isSender == true {

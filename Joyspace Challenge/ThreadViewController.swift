@@ -19,7 +19,7 @@ class ThreadViewController: UIViewController, ThreadDelegate {
     @IBOutlet weak var tableView: UITableView!
     
     private var threads:[JCThread] = []
-    private var selectedThread:JCThread?
+    private var selectedIndex:NSIndexPath?
     let managedContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     override func viewDidLoad() {
@@ -49,7 +49,7 @@ class ThreadViewController: UIViewController, ThreadDelegate {
             let entity =  NSEntityDescription.entityForName("JCThread", inManagedObjectContext:managedContext)
             if let selectedThread = NSManagedObject(entity: entity!,
                 insertIntoManagedObjectContext: managedContext) as? JCThread {
-                    self.selectedThread = selectedThread
+                    selectedIndex = NSIndexPath(forRow: 0, inSection: 0)
                     threads.insert(selectedThread, atIndex: 0)
                     tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Automatic)
                     if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as? ThreadTableViewCell {
@@ -73,8 +73,9 @@ class ThreadViewController: UIViewController, ThreadDelegate {
     }
     
     func createdNewThread(withTitle title:String?) {
-        selectedThread!.title = title
-        selectedThread!.updatedAt = NSDate()
+        let selectedThread = threads[selectedIndex!.row]
+        selectedThread.title = title
+        selectedThread.updatedAt = NSDate()
         do {
             try managedContext.save()
         } catch let error as NSError  {
@@ -97,8 +98,9 @@ class ThreadViewController: UIViewController, ThreadDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let chatController = segue.destinationViewController as? ChatViewController {
+            let selectedThread = threads[selectedIndex!.row]
             chatController.thread = selectedThread
-            if let title = selectedThread?.title {
+            if let title = selectedThread.title {
                 chatController.title = title
             }
         }
@@ -174,13 +176,13 @@ extension ThreadViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as? ThreadTableViewCell {
+        if let selectedIndex = selectedIndex, cell = tableView.cellForRowAtIndexPath(selectedIndex) as? ThreadTableViewCell {
             if cell.titleField.isFirstResponder() {
                 cell.titleFinished(nil)
                 return
             }
         }
-        selectedThread = threads[indexPath.row]
+        selectedIndex = indexPath
         performSegueWithIdentifier("goToChat", sender: self)
     }
     
@@ -190,10 +192,10 @@ extension ThreadViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let renameAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Rename" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
-            self.selectedThread = self.threads[indexPath.row]
+            self.selectedIndex = indexPath
             tableView.setEditing(false, animated: true)
             if let cell = tableView.cellForRowAtIndexPath(indexPath) as? ThreadTableViewCell {
-                cell.thread = self.selectedThread
+                cell.thread = self.threads[self.selectedIndex!.row]
                 cell.titleField.userInteractionEnabled = true
                 cell.titleField.becomeFirstResponder()
             }
@@ -210,7 +212,7 @@ extension ThreadViewController: UITableViewDelegate, UITableViewDataSource {
                 print("Could not save \(error), \(error.userInfo)")
             }
             tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Top)
-            self.selectedThread = nil
+            self.selectedIndex = nil
         })
 
         return [deleteAction, renameAction]

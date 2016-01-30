@@ -106,7 +106,6 @@ class ChatViewController: UIViewController, ChatDelegate {
     }
     
     func zoomImage(image: UIImage) {
-        print("zoomImage")
         if zoomView == nil {
             zoomView = UIImageView(frame: self.view.frame)
             zoomView?.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.75)
@@ -125,7 +124,6 @@ class ChatViewController: UIViewController, ChatDelegate {
     }
     
     func closeImageZoom() {
-        print("closeImageZoom")
         if zoomView != nil {
             UIView.animateWithDuration(0.5, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: {
                 self.zoomView?.alpha = 0
@@ -231,12 +229,14 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
             if let messageText = message.text {
                 let rect = self.calculateChatRect(messageText)
                 cell.messageWidthConstraint.constant = rect.width
-                cell.messageImageView?.image = nil
                 cell.messageTextView.text = messageText
+                cell.messageTextView.hidden = false
+                cell.messageImageView.hidden = true
             } else if let messageImageData = message.image {
                 cell.messageWidthConstraint.constant = self.view.frame.size.width/2
                 cell.messageImageView?.image = UIImage(data: messageImageData)
-                cell.messageTextView.text = nil
+                cell.messageTextView.hidden = true
+                cell.messageImageView.hidden = false
             }
             cell.timeStampLabel.text = nil
             if let timestamp = message.timestamp {
@@ -276,7 +276,7 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
         let style = NSParagraphStyle.defaultParagraphStyle().mutableCopy() as! NSMutableParagraphStyle
         let attributes = [NSFontAttributeName: UIFont.systemFontOfSize(14), NSParagraphStyleAttributeName: style]
         let rect = text.boundingRectWithSize(CGSize(width: UIScreen.mainScreen().bounds.size.width*(2/3), height: CGFloat.max), options: [NSStringDrawingOptions.UsesLineFragmentOrigin, NSStringDrawingOptions.UsesFontLeading], attributes: attributes, context: nil)
-        let paddedRect = CGRectMake(0, 0, rect.width+65, rect.height+95)
+        let paddedRect = CGRectMake(0, 0, rect.width+80, rect.height+90)
         return paddedRect
     }
     

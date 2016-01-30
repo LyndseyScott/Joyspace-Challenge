@@ -62,6 +62,18 @@ class ThreadViewController: UIViewController, ThreadDelegate {
         }
     }
     
+    @IBAction func pressedInfoButton(sender: AnyObject) {
+        let alert = UIAlertController(title: "Extra Features",
+            message: "- Swipe thread cells left to rename/delete chat threads.\n\n- Long press images in messages to zoom.\n\n- Preview images before deciding to send.\n\n- Most recently updated threads rise to the top of the thread table.\n\n- Dates are shown in chat threads whenever there's a 5+ minute break in between messages.", preferredStyle: UIAlertControllerStyle.Alert)
+        let okButton = UIAlertAction(title: "OK",
+            style: .Default) { (alert) -> Void in
+        }
+        alert.addAction(okButton)
+        
+        presentViewController(alert, animated: true,
+            completion: nil)
+    }
+    
     func createdNewThread(withTitle title:String?) {
         selectedThread!.title = title
         selectedThread!.updatedAt = NSDate()
@@ -76,10 +88,10 @@ class ThreadViewController: UIViewController, ThreadDelegate {
     func noTitleEntered() {
         let alert = UIAlertController(title: "Uh-Oh",
             message: "The title must be at least 1 character long.", preferredStyle: UIAlertControllerStyle.Alert)
-        let yesButton = UIAlertAction(title: "OK",
+        let okButton = UIAlertAction(title: "OK",
             style: .Default) { (alert) -> Void in
         }
-        alert.addAction(yesButton)
+        alert.addAction(okButton)
         
         presentViewController(alert, animated: true,
             completion: nil)
@@ -112,7 +124,10 @@ extension ThreadViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if threads.count > 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("ThreadTableViewCell", forIndexPath: indexPath) as! ThreadTableViewCell
+            cell.preservesSuperviewLayoutMargins = false
+            cell.layoutMargins = UIEdgeInsetsZero
             cell.threadDelegate = self
+            
             if let title = threads[indexPath.row].title {
                 cell.titleField.text = title
                 cell.titleField.userInteractionEnabled = false
@@ -143,6 +158,8 @@ extension ThreadViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else {
             let cell = UITableViewCell()
+            cell.preservesSuperviewLayoutMargins = false
+            cell.layoutMargins = UIEdgeInsetsZero
             cell.textLabel?.textAlignment = NSTextAlignment.Center
             cell.userInteractionEnabled = false
             

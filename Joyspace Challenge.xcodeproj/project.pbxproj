@@ -24,6 +24,7 @@
 		042894A81C5BB1E90045B8B7 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 042894A71C5BB1E90045B8B7 /* libicucore.tbd */; };
 		042894AC1C5BD09D0045B8B7 /* ImagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042894AA1C5BD09D0045B8B7 /* ImagePreviewViewController.swift */; };
 		042894AD1C5BD09D0045B8B7 /* ImagePreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042894AB1C5BD09D0045B8B7 /* ImagePreviewViewController.xib */; };
+		042894B71C5C59B90045B8B7 /* Joyspace_launch.png in Resources */ = {isa = PBXBuildFile; fileRef = 042894B61C5C59B90045B8B7 /* Joyspace_launch.png */; };
 		04CF7D251C5A86ED006E1F16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF7D241C5A86ED006E1F16 /* AppDelegate.swift */; };
 		04CF7D2A1C5A86ED006E1F16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04CF7D281C5A86ED006E1F16 /* Main.storyboard */; };
 		04CF7D2D1C5A86ED006E1F16 /* Joyspace_Challenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04CF7D2B1C5A86ED006E1F16 /* Joyspace_Challenge.xcdatamodeld */; };
@@ -57,6 +58,7 @@
 		042894A71C5BB1E90045B8B7 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		042894AA1C5BD09D0045B8B7 /* ImagePreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewController.swift; sourceTree = "<group>"; };
 		042894AB1C5BD09D0045B8B7 /* ImagePreviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImagePreviewViewController.xib; sourceTree = "<group>"; };
+		042894B61C5C59B90045B8B7 /* Joyspace_launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Joyspace_launch.png; sourceTree = "<group>"; };
 		04CF7D211C5A86ED006E1F16 /* Joyspace Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Joyspace Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04CF7D241C5A86ED006E1F16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04CF7D291C5A86ED006E1F16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -123,13 +125,14 @@
 			name = SocketRocket;
 			sourceTree = "<group>";
 		};
-		042894AE1C5BE7550045B8B7 /* Chat Images */ = {
+		042894AE1C5BE7550045B8B7 /* Images */ = {
 			isa = PBXGroup;
 			children = (
 				0428942F1C5AE4D40045B8B7 /* Left_bubble.png */,
 				042894301C5AE4D40045B8B7 /* Right_bubble.png */,
+				042894B61C5C59B90045B8B7 /* Joyspace_launch.png */,
 			);
-			name = "Chat Images";
+			name = Images;
 			sourceTree = "<group>";
 		};
 		042894AF1C5BE7690045B8B7 /* Image Preview */ = {
@@ -170,13 +173,13 @@
 				04CF7D391C5A8B8A006E1F16 /* ThreadViewController.swift */,
 				04CF7D3B1C5A8B95006E1F16 /* ChatViewController.swift */,
 				04CF7D281C5A86ED006E1F16 /* Main.storyboard */,
-				042894AE1C5BE7550045B8B7 /* Chat Images */,
+				04CF7D301C5A86EE006E1F16 /* LaunchScreen.storyboard */,
+				042894AE1C5BE7550045B8B7 /* Images */,
 				042894AF1C5BE7690045B8B7 /* Image Preview */,
 				042894571C5B25710045B8B7 /* Core Data */,
 				0428942E1C5A9B560045B8B7 /* Custom Cells */,
 				042894A91C5BB1FC0045B8B7 /* SocketRocket */,
 				04CF7D2E1C5A86ED006E1F16 /* Assets.xcassets */,
-				04CF7D301C5A86EE006E1F16 /* LaunchScreen.storyboard */,
 				04CF7D331C5A86EE006E1F16 /* Info.plist */,
 			);
 			path = "Joyspace Challenge";
@@ -241,6 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				042894311C5AE4D40045B8B7 /* Left_bubble.png in Resources */,
+				042894B71C5C59B90045B8B7 /* Joyspace_launch.png in Resources */,
 				042894361C5AE59B0045B8B7 /* MessageTableViewCell.xib in Resources */,
 				04CF7D321C5A86EE006E1F16 /* LaunchScreen.storyboard in Resources */,
 				042894AD1C5BD09D0045B8B7 /* ImagePreviewViewController.xib in Resources */,

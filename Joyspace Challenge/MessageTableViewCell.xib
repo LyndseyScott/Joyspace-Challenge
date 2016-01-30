@@ -23,7 +23,7 @@
                         </constraints>
                     </imageView>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="leE-7k-sTB">
-                        <rect key="frame" x="30" y="20" width="258" height="96.5"/>
+                        <rect key="frame" x="35" y="25" width="248" height="86.5"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -50,7 +50,7 @@
                     <constraint firstItem="Pdr-SM-gWi" firstAttribute="top" secondItem="osB-VS-HIc" secondAttribute="bottom" id="6Ec-rn-24O"/>
                     <constraint firstAttribute="bottom" secondItem="osB-VS-HIc" secondAttribute="bottom" constant="20" id="8aH-V5-XME"/>
                     <constraint firstItem="ERj-KZ-D1p" firstAttribute="height" secondItem="osB-VS-HIc" secondAttribute="height" multiplier="0.75" id="9kh-vh-5pW"/>
-                    <constraint firstItem="leE-7k-sTB" firstAttribute="bottom" secondItem="osB-VS-HIc" secondAttribute="bottom" constant="-20" id="D6G-th-MW4"/>
+                    <constraint firstItem="leE-7k-sTB" firstAttribute="bottom" secondItem="osB-VS-HIc" secondAttribute="bottom" constant="-25" id="D6G-th-MW4"/>
                     <constraint firstItem="ERj-KZ-D1p" firstAttribute="centerY" secondItem="leE-7k-sTB" secondAttribute="centerY" id="FLe-uh-2fA"/>
                     <constraint firstItem="osB-VS-HIc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="FOw-Ci-LwN"/>
                     <constraint firstItem="leE-7k-sTB" firstAttribute="centerY" secondItem="osB-VS-HIc" secondAttribute="centerY" id="I54-iv-csv"/>
@@ -60,11 +60,11 @@
                     <constraint firstItem="osB-VS-HIc" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="RCh-ds-WP1"/>
                     <constraint firstItem="osB-VS-HIc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="RyK-lY-3lV"/>
                     <constraint firstItem="leE-7k-sTB" firstAttribute="centerX" secondItem="osB-VS-HIc" secondAttribute="centerX" id="StI-hW-e8N"/>
-                    <constraint firstItem="leE-7k-sTB" firstAttribute="trailing" secondItem="osB-VS-HIc" secondAttribute="trailing" constant="-30" id="Xcr-X8-7bG"/>
+                    <constraint firstItem="leE-7k-sTB" firstAttribute="trailing" secondItem="osB-VS-HIc" secondAttribute="trailing" constant="-35" id="Xcr-X8-7bG"/>
                     <constraint firstAttribute="bottomMargin" secondItem="Pdr-SM-gWi" secondAttribute="bottom" constant="-8" id="b5X-VC-OAq"/>
-                    <constraint firstItem="leE-7k-sTB" firstAttribute="leading" secondItem="osB-VS-HIc" secondAttribute="leading" constant="30" id="bmW-S5-hPF"/>
+                    <constraint firstItem="leE-7k-sTB" firstAttribute="leading" secondItem="osB-VS-HIc" secondAttribute="leading" constant="35" id="bmW-S5-hPF"/>
                     <constraint firstAttribute="trailingMargin" secondItem="osB-VS-HIc" secondAttribute="trailing" id="dpn-nq-wo6"/>
-                    <constraint firstItem="leE-7k-sTB" firstAttribute="top" secondItem="osB-VS-HIc" secondAttribute="top" constant="20" id="gvT-5Z-Hgb"/>
+                    <constraint firstItem="leE-7k-sTB" firstAttribute="top" secondItem="osB-VS-HIc" secondAttribute="top" constant="25" id="gvT-5Z-Hgb"/>
                     <constraint firstItem="ERj-KZ-D1p" firstAttribute="width" secondItem="osB-VS-HIc" secondAttribute="width" multiplier="0.75" id="hhz-iA-Kjc"/>
                     <constraint firstItem="Pdr-SM-gWi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="mfH-69-I0V"/>
                     <constraint firstItem="osB-VS-HIc" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="mjj-Q7-H4e"/>

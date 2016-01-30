@@ -64,7 +64,7 @@ class ThreadViewController: UIViewController, ThreadDelegate {
     
     @IBAction func pressedInfoButton(sender: AnyObject) {
         let alert = UIAlertController(title: "Extra Features",
-            message: "\n- Swipe thread cells left to rename/delete chat threads.\n\n- Long press images in messages to view them in full-screen.\n\n- Preview images before deciding to send.\n\n- The most recently updated threads rise to the top of the thread table.\n\n- Dates are shown in chat threads whenever there's a 5+ minute break in between messages.\n\n- Messages persist with core data.", preferredStyle: UIAlertControllerStyle.Alert)
+            message: "\n- Swipe thread cells left to rename/delete chat threads.\n\n- Long press images in messages to view them in full-screen.\n\n- Preview images before deciding to send.\n\n- The most recently updated threads rise to the top of the thread table.\n\n- Dates are shown in chat threads whenever there's a 5+ minute break in between messages.\n\n- Refresh socket connection using refresh button on chat view.", preferredStyle: UIAlertControllerStyle.Alert)
         let okButton = UIAlertAction(title: "OK",
             style: .Default) { (alert) -> Void in
         }

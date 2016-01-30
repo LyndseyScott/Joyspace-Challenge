@@ -147,7 +147,7 @@
 			name = "Image Preview";
 			sourceTree = "<group>";
 		};
-		04CF7D181C5A86ED006E1F16 = {
+		042894BA1C5D1D210045B8B7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				042894A71C5BB1E90045B8B7 /* libicucore.tbd */,
@@ -156,6 +156,14 @@
 				0428946C1C5BA75B0045B8B7 /* Foundation.framework */,
 				0428946A1C5BA7550045B8B7 /* Security.framework */,
 				042894681C5BA74F0045B8B7 /* CFNetwork.framework */,
+			);
+			name = Frameworks;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		04CF7D181C5A86ED006E1F16 = {
+			isa = PBXGroup;
+			children = (
 				04CF7D231C5A86ED006E1F16 /* Joyspace Challenge */,
 				04CF7D221C5A86ED006E1F16 /* Products */,
 			);
@@ -182,6 +190,7 @@
 				042894571C5B25710045B8B7 /* Core Data */,
 				0428942E1C5A9B560045B8B7 /* Custom Cells */,
 				042894A91C5BB1FC0045B8B7 /* SocketRocket */,
+				042894BA1C5D1D210045B8B7 /* Frameworks */,
 				04CF7D2E1C5A86ED006E1F16 /* Assets.xcassets */,
 				04CF7D331C5A86EE006E1F16 /* Info.plist */,
 			);

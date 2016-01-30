@@ -24,7 +24,6 @@ class ThreadViewController: UIViewController, ThreadDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         tableView.registerNib(UINib(nibName: "ThreadTableViewCell", bundle: nil), forCellReuseIdentifier: "ThreadTableViewCell")
     }
     
@@ -43,7 +42,6 @@ class ThreadViewController: UIViewController, ThreadDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func createNewThread(sender: AnyObject) {
@@ -53,7 +51,7 @@ class ThreadViewController: UIViewController, ThreadDelegate {
                 insertIntoManagedObjectContext: managedContext) as? JCThread {
                     self.selectedThread = selectedThread
                     threads.insert(selectedThread, atIndex: 0)
-                    tableView.reloadData()
+                    tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Automatic)
                     if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as? ThreadTableViewCell {
                         cell.thread = selectedThread
                         cell.titleField.becomeFirstResponder()

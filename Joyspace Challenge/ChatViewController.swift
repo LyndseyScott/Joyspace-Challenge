@@ -33,8 +33,10 @@ class ChatViewController: UIViewController, ChatDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        chatTextField.frame = CGRectMake(60, 7, self.view.frame.size.width-120, 30)
         chatTableView.registerNib(UINib(nibName: "MessageTableViewCell", bundle: nil), forCellReuseIdentifier: "MessageTableViewCell")
+        
+        chatTextField.frame = CGRectMake(60, 7, self.view.frame.size.width-120, 30)
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
         
@@ -42,7 +44,7 @@ class ChatViewController: UIViewController, ChatDelegate {
         chatTableView.addGestureRecognizer(tapGesture)
         
         let refreshButton = UIBarButtonItem(image: UIImage(named: "refresh_icon.png"), style: .Plain, target: self, action: "refreshConnection")
-        self.navigationItem.rightBarButtonItem = refreshButton
+        navigationItem.rightBarButtonItem = refreshButton
         
         socketConnect()
     }
@@ -60,7 +62,6 @@ class ChatViewController: UIViewController, ChatDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     @IBAction func sendMessage(sender: AnyObject) {
@@ -165,7 +166,6 @@ extension ChatViewController:SRWebSocketDelegate {
     }
     
     func webSocket(webSocket: SRWebSocket!, didReceiveMessage message: AnyObject!) {
-        // All incoming messages ( socket.on() ) are received in this function. Parsed with JSON
         print("Message received: \(message)")
         if let textMessage = message as? String {
             let entity =  NSEntityDescription.entityForName("JCMessage",
@@ -302,8 +302,6 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
             connectionLabel?.text = "Connected."
         } else if socketConnected == false {
             connectionLabel?.text = "Disconnected."
-        } else {
-            connectionLabel?.text = nil
         }
     }
     
@@ -323,6 +321,7 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension ChatViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     @IBAction func addPhoto(sender: AnyObject) {
         self.view.endEditing(true)
         let imagePickerActionSheet = UIAlertController(title: "Snap/Upload Photo",
@@ -430,7 +429,6 @@ extension ChatViewController: UIImagePickerControllerDelegate, UINavigationContr
 }
 
 extension UIImage {
-    
     func normalizedImage() -> UIImage {
         if self.imageOrientation == UIImageOrientation.Up {
             return self

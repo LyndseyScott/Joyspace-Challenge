@@ -20,7 +20,7 @@ class ThreadViewController: UIViewController, ThreadDelegate {
     
     private var threads:[JCThread] = []
     private var selectedIndex:NSIndexPath?
-    let managedContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    private let managedContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     override func viewDidLoad() {
         super.viewDidLoad()

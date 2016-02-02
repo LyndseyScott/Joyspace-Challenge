@@ -18,7 +18,7 @@ class MessageTableViewCell: UITableViewCell {
     @IBOutlet weak var messageTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var timeStampLabel: UILabel!
     
-    var longPress:UILongPressGestureRecognizer?
+    private var longPress:UILongPressGestureRecognizer?
     var chatDelegate:ChatDelegate?
     
     override func awakeFromNib() {

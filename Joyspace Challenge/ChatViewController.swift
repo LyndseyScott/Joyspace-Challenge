@@ -22,14 +22,14 @@ class ChatViewController: UIViewController, ChatDelegate {
     @IBOutlet weak var chatTableView: UITableView!
     @IBOutlet weak var toolbarBottomConstraint: NSLayoutConstraint!
     
-    let managedContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    private let managedContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    private var socketIO:SRWebSocket?
+    private var socketConnected:Bool?
+    private var connectionLabel:UILabel?
+    private var imagePreviewView:ImagePreviewViewController?
+    private var zoomView:UIImageView?
+    private var refreshingConnection:Bool = false
     var thread:JCThread?
-    var socketIO:SRWebSocket?
-    var socketConnected:Bool?
-    var connectionLabel:UILabel?
-    var imagePreviewView:ImagePreviewViewController?
-    var zoomView:UIImageView?
-    var refreshingConnection:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,11 +59,11 @@ class ChatViewController: UIViewController, ChatDelegate {
             socketIO?.close()
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
     @IBAction func sendMessage(sender: AnyObject) {
         view.endEditing(true)
         if let textMessage = self.chatTextField.text where textMessage.characters.count > 0 {
@@ -148,6 +148,7 @@ class ChatViewController: UIViewController, ChatDelegate {
 extension ChatViewController:SRWebSocketDelegate {
     
     func socketConnect() {
+        print("socketConnect")
         socketIO = SRWebSocket(URLRequest: NSURLRequest(URL: NSURL(string: "ws://echo.websocket.org")!))
         socketIO!.delegate = self
         socketIO!.open()
@@ -204,9 +205,16 @@ extension ChatViewController:SRWebSocketDelegate {
     }
     
     func refreshConnection() {
-        connectionLabel?.text = nil
-        refreshingConnection = true
-        socketIO?.close()
+        dispatch_async(dispatch_get_main_queue(),{
+            print("refreshConnection")
+            self.connectionLabel?.text = nil
+            self.refreshingConnection = true
+            if self.socketIO == nil {
+                self.socketIO?.close()
+            } else {
+                self.socketConnect()
+            }
+        })
     }
     
     func displayNotConnectedAlert() {
@@ -286,11 +294,13 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        connectionLabel = UILabel()
-        connectionLabel!.textAlignment = NSTextAlignment.Center
-        connectionLabel!.font = UIFont.italicSystemFontOfSize(13)
-        connectionLabel!.textColor = UIColor.whiteColor()
-        connectionLabel?.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.75)
+        if connectionLabel == nil {
+            connectionLabel = UILabel()
+            connectionLabel!.textAlignment = NSTextAlignment.Center
+            connectionLabel!.font = UIFont.italicSystemFontOfSize(13)
+            connectionLabel!.textColor = UIColor.whiteColor()
+            connectionLabel?.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.75)
+        }
         
         updateConnectionLabel()
         
@@ -298,11 +308,14 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func updateConnectionLabel() {
-        if socketConnected == true {
-            connectionLabel?.text = "Connected."
-        } else if socketConnected == false {
-            connectionLabel?.text = "Disconnected."
-        }
+        print("updateConnectionLabel")
+        dispatch_async(dispatch_get_main_queue(),{
+            if self.socketConnected == true {
+                self.connectionLabel?.text = "Connected."
+            } else if self.socketConnected == false {
+                self.connectionLabel?.text = "Disconnected."
+            }
+        })
     }
     
     func calculateChatRect(text:String) -> CGRect {

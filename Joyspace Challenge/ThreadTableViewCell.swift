@@ -16,10 +16,9 @@ class ThreadTableViewCell: UITableViewCell {
     @IBOutlet weak var lastMessageLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
+    private let managedContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     var threadDelegate:ThreadDelegate?
     var thread:JCThread?
-    
-    let managedContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     override func awakeFromNib() {
         super.awakeFromNib()
